@@ -12,9 +12,9 @@ const NavBar = () => {
         <li>
             <Link to='/order'>Order</Link>
         </li>
-        {/* <li>
+        <li>
             <Link to='/login'>Login</Link>
-        </li> */}
+        </li>
 
 
     </>
