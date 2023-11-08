@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import feautradItems from '../../../assets/home/featured.jpg';
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import './Featurad.css';
@@ -16,7 +17,9 @@ const Featurad = () => {
                     <p>Aug 10, 2023</p>
                     <p className='mt-4'>When Can I Get Some....</p>
                     <p className='mt-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo velit aliquid ad pariatur odit quae quod ducimus eum mollitia sed accusamus, iusto quis architecto et!</p>
-                    <button className="btn btn-active btn-secondary mt-8">Order Now</button>
+                    <Link to="/order">
+                        <button className="btn btn-active btn-secondary mt-8 text-center">Order Now</button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
 import MenuItem from "../../Shared/MenuItem/MenuItem";
@@ -21,7 +22,10 @@ const PopularMenu = () => {
                 }
             </div>
             <center>
-                <button className="btn btn-active btn-secondary mt-8 text-center">Order Now</button>
+                <Link to="/order">
+                    <button className="btn btn-active btn-secondary mt-8 text-center">Order Now</button>
+                </Link>
+
             </center>
 
         </section>
