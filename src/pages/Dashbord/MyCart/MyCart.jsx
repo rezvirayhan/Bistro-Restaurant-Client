@@ -4,11 +4,12 @@ import useCart from "../../../hooks/useCart";
 const MyCart = () => {
     const [cart, refetch] = useCart()
     console.log(cart);
-    const total = cart.reduce((sum, item) => item.price + sum, 0)
+    const totalTk = cart.reduce((sum, item) => item.price + sum, 0)
+    const total = totalTk.toFixed()
     const handleDeleted = item => {
         Swal.fire({
             title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            text: `You won't be able to revert this!.. ${item.name}`,
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -23,7 +24,7 @@ const MyCart = () => {
                     .then(data => {
                         if (data.deletedCount > 0) {
                             refetch()
-                            Swal.fire({ title: "Deleted!", text: "Your file has been deleted.", icon: "success" });
+                            Swal.fire({ title: "Deleted!", text: `Your file has been deleted. ${item.name}`, icon: "success" });
                         }
                     })
             }

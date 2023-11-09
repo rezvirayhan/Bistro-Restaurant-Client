@@ -18,25 +18,38 @@ const SignUp = () => {
                 const logedUser = result.user;
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        console.log("User Profile Update..");
-                        reset()
-                        Swal.fire({
-                            title: "User Profile Updated Done",
-                            html: "I will close in <b></b> milliseconds.",
-                            timer: 2000,
-                            timerProgressBar: true,
-                            didOpen: () => {
-                                Swal.showLoading();
-                                const timer = Swal.getPopup().querySelector("b");
-                                timerInterval = setInterval(() => {
-                                    timer.textContent = `${Swal.getTimerLeft()}`;
-                                }, 100);
+                        const saveUser = { name: data.name, email: data.email }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
                             },
-                            willClose: () => {
-                                clearInterval(timerInterval);
-                            }
+                            body: JSON.stringify(saveUser)
                         })
-                        navigate('/')
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    Swal.fire({
+                                        title: "User Profile Updated Done",
+                                        html: "I will close in <b></b> milliseconds.",
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                        didOpen: () => {
+                                            Swal.showLoading();
+                                            const timer = Swal.getPopup().querySelector("b");
+                                            timerInterval = setInterval(() => {
+                                                timer.textContent = `${Swal.getTimerLeft()}`;
+                                            }, 100);
+                                        },
+                                        willClose: () => {
+                                            clearInterval(timerInterval);
+                                        }
+                                    })
+                                    navigate('/')
+                                }
+                            })
+                        reset()
+
                     })
                     .catch(error => console.log(error));
             })
