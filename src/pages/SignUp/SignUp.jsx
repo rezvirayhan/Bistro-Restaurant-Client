@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogn from "../Shared/SocialLogin/SocialLogn";
 
 const SignUp = () => {
     let timerInterval; // sweetalert2
@@ -104,6 +105,7 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p className="text-center mb-2"><small>Alrady Have an Account? Go to <Link to="/login">Login</Link></small></p>
+                        <SocialLogn></SocialLogn>
                     </div>
                 </div>
             </div>

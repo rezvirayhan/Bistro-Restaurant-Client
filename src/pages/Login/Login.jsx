@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogn from "../Shared/SocialLogin/SocialLogn";
 
 const Login = () => {
     const { signIn } = useContext(AuthContext)
@@ -72,6 +73,7 @@ const Login = () => {
                             </div>
                         </form>
                         <p className="text-center mb-2"><small>New Here? Go to <Link to="/signup">Sign Up</Link></small></p>
+                        <SocialLogn></SocialLogn>
                     </div>
                 </div>
             </div>
