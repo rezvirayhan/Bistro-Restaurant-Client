@@ -1,12 +1,15 @@
 import { FaBook, FaCalendarAlt, FaHome, FaShoppingCart, FaUser, FaUtensilSpoon, FaWallet } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 import useCart from "../hooks/useCart";
 
 const Dashbord = () => {
     const [cart] = useCart()
 
     //TODO
-    const isAdmin = true;
+    // const isAdmin = true;
+
+    const [isAdmin] = useAdmin()
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -26,16 +29,16 @@ const Dashbord = () => {
                                 <Link> <FaHome></FaHome> Admin Home</Link></li>
 
                             <li>
-                                <Link> <FaUtensilSpoon></FaUtensilSpoon> Add Itmes</Link>
+                                <Link> <FaUtensilSpoon></FaUtensilSpoon> Admin Add Itmes</Link>
                             </li>
                             <li>
-                                <Link> <FaWallet></FaWallet> Manage Itmes</Link>
+                                <Link> <FaWallet></FaWallet> Admin Manage Itmes</Link>
                             </li>
                             <li>
-                                <Link> <FaBook></FaBook> Manage Booking</Link>
+                                <Link> <FaBook></FaBook> Admin Manage Booking</Link>
                             </li>
                             <li>
-                                <Link to="/dashbord/allusers"> <FaUser></FaUser> Manage Users</Link>
+                                <Link to="/dashbord/allusers"> <FaUser></FaUser> Admin Manage Users</Link>
                             </li>
                             <div className="divider">OR</div>
 

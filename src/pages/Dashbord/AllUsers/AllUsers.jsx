@@ -1,11 +1,13 @@
 import { useQuery } from "react-query";
 import Swal from "sweetalert2";
 import AdminIcon from "../../../assets/icon/correct.png";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AllUsers = () => {
+    const [axiosSecure] = useAxiosSecure()
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch("http://localhost:5000/users")
-        return res.json()
+        const res = await axiosSecure.get("/users")
+        return res.data;
 
     })
     const handleDeleted = user => {
@@ -89,7 +91,6 @@ const AllUsers = () => {
                                             </div>
                                         </div> :
                                             <button onClick={() => handleMakeAdmin(user)} className="btn btn-active btn-primary btn-sm text-xs">Make Admin</button>
-
                                         }
                                     </td>
                                     <td>
