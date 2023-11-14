@@ -32,7 +32,7 @@ const Dashbord = () => {
                                 <Link to="/dashbord/addItem"> <FaUtensilSpoon></FaUtensilSpoon> Add Itmes</Link>
                             </li>
                             <li>
-                                <Link> <FaWallet></FaWallet> Admin Manage Itmes</Link>
+                                <Link to="/dashbord/managettems"> <FaWallet></FaWallet> Manage Itmes</Link>
                             </li>
                             <li>
                                 <Link> <FaBook></FaBook> Admin Manage Booking</Link>
