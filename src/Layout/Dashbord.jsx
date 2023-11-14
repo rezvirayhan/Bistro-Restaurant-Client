@@ -29,7 +29,7 @@ const Dashbord = () => {
                                 <Link> <FaHome></FaHome> Admin Home</Link></li>
 
                             <li>
-                                <Link> <FaUtensilSpoon></FaUtensilSpoon> Admin Add Itmes</Link>
+                                <Link to="/dashbord/addItem"> <FaUtensilSpoon></FaUtensilSpoon> Add Itmes</Link>
                             </li>
                             <li>
                                 <Link> <FaWallet></FaWallet> Admin Manage Itmes</Link>

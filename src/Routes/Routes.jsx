@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import Dashbord from "../Layout/Dashbord";
 import Main from "../Layout/Main";
+import AddItem from "../pages/Dashbord/AddItem/AddItem";
 import AllUsers from "../pages/Dashbord/AllUsers/AllUsers";
 import MyCart from "../pages/Dashbord/MyCart/MyCart";
 import Home from "../pages/Home/Home/Home";
@@ -10,6 +11,7 @@ import Login from "../pages/Login/Login";
 import Menu from "../pages/Menu/Menu/Menu";
 import Order from "../pages/Order/Order/Order";
 import SignUp from "../pages/SignUp/SignUp";
+import AdminRoutes from "./AdminRoutes";
 import PrivateRoutes from "./PrivateRoutes";
 
 
@@ -51,7 +53,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'allusers',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoutes>
+                    <AllUsers></AllUsers>
+                </AdminRoutes>
+            },
+            {
+                path: 'addItem',
+                element: <AdminRoutes>
+                    <AddItem></AddItem>
+                </AdminRoutes>
             }
         ]
     }
