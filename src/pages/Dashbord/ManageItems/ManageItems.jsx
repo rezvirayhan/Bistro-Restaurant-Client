@@ -4,34 +4,36 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useMenu from "../../../hooks/useMenu";
 
 const ManageItems = () => {
-    const [menu, , refetch] = useMenu()
-    const [axiosSecure] = useAxiosSecure()
-    const handleDeleted = item => {
+    const [menu, , refetch] = useMenu();
+    const [axiosSecure] = useAxiosSecure();
+
+    const handleDelete = item => {
         Swal.fire({
-            title: "Are you sure?",
+            title: 'Are you sure?',
             text: "You won't be able to revert this!",
-            icon: "warning",
+            icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
+
                 axiosSecure.delete(`/menu/${item._id}`)
                     .then(res => {
                         console.log('deleted res', res.data);
                         if (res.data.deletedCount > 0) {
-                            refetch()
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
-                                icon: "success"
-                            });
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
                         }
                     })
 
             }
-        });
+        })
     }
     return (
         <div className="w-full px-10">
@@ -84,7 +86,7 @@ const ManageItems = () => {
                                 </td>
                                 <td>
                                     <td>
-                                        <button onClick={() => handleDeleted(item)} className="btn btn-circle btn-outline">
+                                        <button onClick={() => handleDelete(item)} className="btn btn-circle btn-outline">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                                         </button>
                                     </td>
@@ -102,3 +104,32 @@ const ManageItems = () => {
 };
 
 export default ManageItems;
+
+
+
+
+//  Swal.fire({
+//             title: "Are you sure?",
+//             text: "You won't be able to revert this!",
+//             icon: "warning",
+//             showCancelButton: true,
+//             confirmButtonColor: "#3085d6",
+//             cancelButtonColor: "#d33",
+//             confirmButtonText: "Yes, delete it!"
+//         }).then((result) => {
+//             if (result.isConfirmed) {
+//                 axiosSecure.delete(`/menu/${item._id}`)
+//                     .then(res => {
+//                         console.log('deleted res', res.data);
+//                         if (res.data.deletedCount > 0) {
+//                             refetch()
+//                             Swal.fire({
+//                                 title: "Deleted!",
+//                                 text: "Your file has been deleted.",
+//                                 icon: "success"
+//                             });
+//                         }
+//                     })
+
+//             }
+//         });
